@@ -7,6 +7,8 @@ CREATE TABLE supaviz.pages (
     page_description TEXT
 );
 
+INSERT INTO supaviz.pages (title, slug, page_description) VALUES ('Home', 'home', 'Home Page');
+
 CREATE TYPE supaviz.chart_kind AS ENUM ('area', 'bar', 'line', 'pie', 'donut');
 
 CREATE TABLE supaviz.charts (
