@@ -13,21 +13,19 @@ CREATE TABLE supaviz.charts (
     id SERIAL PRIMARY KEY,
     page_id INTEGER NOT NULL,
     title TEXT NOT NULL,
-    kind chart_kind NOT NULL,
+    kind supaviz.chart_kind NOT NULL,
 
     custom_query BOOLEAN NOT NULL DEFAULT FALSE,
 
     data_key TEXT,
-    categories ARRAY[TEXT],
+    categories TEXT[],
 
     table_from TEXT,
     query TEXT,
 
     records JSON,
 
-    FOREIGN KEY (page) REFERENCES supaviz.pages(id),
-    FOREIGN KEY (table_from) REFERENCES information_schema.tables(table_name),
-    FOREIGN KEY (data_key) REFERENCES information_schema.columns(column_name)
+    FOREIGN KEY (page_id) REFERENCES supaviz.pages(id)
 );
 
 CREATE OR REPLACE FUNCTION supaviz.populate_records()
